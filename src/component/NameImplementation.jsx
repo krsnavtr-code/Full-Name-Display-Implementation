@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "./NameImplementation.module.css";
-import { render, fireEvent, waitFor, screen } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
 
 const NameImplementation = () => {
   const [firstName, setFirstName] = useState("");
