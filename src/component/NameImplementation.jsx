@@ -1,11 +1,15 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./NameImplementation.module.css";
 
 const NameImplementation = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [fullName, setFullName] = useState("");
+  const [isSubmitDisabled, setSubmitDisabled] = useState(true);
+
+  useEffect(() => {
+    setSubmitDisabled(!firstName || !lastName);
+  }, [firstName, lastName]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -21,11 +25,9 @@ const NameImplementation = () => {
     setFullName(fullNameValue);
   };
 
-  const isSubmitDisabled = !firstName || !lastName;
-
   return (
     <div className={styles.container}>
-      <h1> Full Name Display </h1>
+      <h1>Full Name Display</h1>
       <div>
         <label>First Name:</label>
         <input
